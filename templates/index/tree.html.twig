@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <form method= "GET" action="/tree?dir={{ dir }}">
+        <div><b>Name of file...</b></div>
+    <input name="name" type="text" required >
+    <br><br>
+        <input type="submit" value= "Search">
+    </form>
+
+
+     <div><h2>Directories</h2></div>
+
+    <li><a href="/tree?dir={{ back_dir }}">..</a></li>
+
+    {% for data in tree[0] %}
+        <li><a{% if tree[1] %} href="/tree?dir={{ dir }}/{{ data }}"{% endif %}>
+                {{ data }}</a></li>
+    {% endfor %}
+
+    <div><h2>Files</h2></div>
+    {% for data in files[0] %}
+        <li>{{ data }}</li>
+    {% endfor %}
+
+
+{% endblock %}

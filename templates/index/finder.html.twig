@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <form method= "GET" action="/tree?dir={{ dir }}">
+        <div><b>Name of file...</b></div>
+        <input name="name" type="text" required value="{{ name }}">
+        <br><br>
+        <input type="submit" value= "Search">
+    </form>
+        {% for results in data[0] %}
+            <li>{% if not (data[1])%}<h2>{% endif %}{{ results }}{% if not data[1]%}</h2>{% endif %}</li>
+        {% endfor %}
+
+{% endblock %}
